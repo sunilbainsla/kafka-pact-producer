@@ -14,19 +14,18 @@ import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @SpringBootTest(classes = KafkaPactProducerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("paymentProviderKafka")
 @Consumer("paymentConsumerKafka")
-@PactBroker(host ="localhost", port = "9292")
+@PactBroker(url = "http://localhost:9292")
 public class KafkaPactProducerServiceApplicationTests {
 
     @TestTemplate
     @ExtendWith(PactVerificationInvocationContextProvider.class)
-    void testTemplate( PactVerificationContext context) {
+    void testTemplate(PactVerificationContext context) {
         context.verifyInteraction();
     }
 
@@ -43,7 +42,7 @@ public class KafkaPactProducerServiceApplicationTests {
         payment.setPaymentDate("2022-06-13");
         payment.setData("test");
         payment.setAmount(21212);
-        return new ObjectMapper().writeValueAsString( payment);
+        return new ObjectMapper().writeValueAsString(payment);
     }
 
 }
