@@ -20,7 +20,7 @@ import java.util.UUID;
 @SpringBootTest(classes = KafkaPactProducerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("paymentProviderKafka")
 @Consumer("paymentConsumerKafka")
-@PactBroker(url = "http://localhost:9292")
+@PactBroker(host = "localhost", port = "9292")
 public class KafkaPactProducerServiceApplicationTests {
 
     @TestTemplate
