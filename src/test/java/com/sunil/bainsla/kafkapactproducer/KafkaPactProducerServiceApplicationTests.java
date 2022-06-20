@@ -14,7 +14,7 @@ import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.UUID;
 
 @SpringBootTest(classes = KafkaPactProducerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,7 +31,7 @@ public class KafkaPactProducerServiceApplicationTests {
 
     @BeforeEach
     void before(PactVerificationContext context) {
-        context.setTarget(new MessageTestTarget(List.of(this.getClass().getPackage().getName())));
+        context.setTarget(new MessageTestTarget(Arrays.asList(this.getClass().getPackage().getName())));
     }
 
     @PactVerifyProvider("A valid Payment created event")
