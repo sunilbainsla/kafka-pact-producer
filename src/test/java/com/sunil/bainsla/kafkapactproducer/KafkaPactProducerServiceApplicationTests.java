@@ -42,6 +42,8 @@ public class KafkaPactProducerServiceApplicationTests {
         payment.setPaymentDate("2022-06-13");
         payment.setData("test");
         payment.setAmount(21212);
+        payment.setName("Sunil");
+        payment.setAccountNumber("12345678");
         return new ObjectMapper().writeValueAsString(payment);
     }
 

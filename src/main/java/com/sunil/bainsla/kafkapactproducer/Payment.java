@@ -8,4 +8,6 @@ public class Payment {
     String data;
     String paymentDate;
     int amount;
+    String name;
+    String accountNumber;
 }
